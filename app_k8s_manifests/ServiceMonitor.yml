@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: aiops-project-servicemonitor
+  labels:
+    app: aiops
+    release: monitor
+spec:
+  selector:
+    matchLabels:
+      app: aiops     # MUST match labels in your Service
+  namespaceSelector:
+    matchNames:
+      - default             # your service is in default namespace
+  endpoints:
+    - port: http            # MUST match service.port.name
+      path: /metrics
+      interval: 10s
+      scrapeTimeout: 5s

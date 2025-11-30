@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aiops-project-deployment
+  labels:
+    app: aiops
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: aiops
+  template:
+    metadata:
+      labels:
+        app: aiops
+    spec:
+      containers:
+      - name: aiops-flask-app
+        image: dakshsawhneyy/ai-ops-prom-flask:latest
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
