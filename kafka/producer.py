@@ -32,7 +32,7 @@ def delivery_report(err, msg):
 
 # 3. Produce messages
 try:
-    for i in range(5):
+    while True:
         message_data = { "metric": "aiops_api_latency_ms", "value": 123.4, "timestamp": 1732960000 }
         
         # Serialize the message to a JSON string, then encode it to bytes
@@ -47,7 +47,7 @@ try:
         
         # Poll for any completed events (delivery reports) that need handling
         producer.poll(0) 
-        time.sleep(0.1)
+        time.sleep(1)
 
 except BufferError:
     print("Local producer queue is full. Wait for messages to be delivered.")
