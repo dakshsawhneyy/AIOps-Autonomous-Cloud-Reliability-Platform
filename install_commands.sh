@@ -26,5 +26,5 @@ kubectl apply -f https://strimzi.io/install/latest?namespace=kafka
 kubectl apply -f https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/main/examples/kafka/kafka-persistent.yaml -n kafka
 
 #################################
-# 
+# <Next-Package>
 #################################
